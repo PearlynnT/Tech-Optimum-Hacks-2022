@@ -1,9 +1,18 @@
 import React, { useState } from "react";
-import { Text, StyleSheet, View, Image, TouchableOpacity } from "react-native";
+import {
+  Text,
+  StyleSheet,
+  View,
+  Image,
+  TouchableOpacity,
+  TextInput,
+} from "react-native";
 import * as ImagePicker from "expo-image-picker";
 
 export default function ProfileScreen() {
   const [selectedImage, setSelectedImage] = useState(null);
+  const [name, setName] = useState("");
+  const [bio, setBio] = useState("");
 
   let openImagePickerAsync = async () => {
     let permissionResult =
@@ -38,6 +47,22 @@ export default function ProfileScreen() {
       <TouchableOpacity onPress={openImagePickerAsync}>
         <Text style={styles.edit}>Edit photo</Text>
       </TouchableOpacity>
+      <TextInput
+        style={styles.input}
+        placeholder="Name"
+        autoCapitalize="none"
+        onChangeText={(text) => setName(text)}
+        underlineColorAndroid="transparent"
+        value={name}
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="Bio"
+        autoCapitalize="none"
+        onChangeText={(text) => setBio(text)}
+        underlineColorAndroid="transparent"
+        value={bio}
+      />
       <TouchableOpacity style={styles.button} onPress={() => onLogoutPress()}>
         <Text style={styles.buttonTitle}>Log Out</Text>
       </TouchableOpacity>
@@ -62,5 +87,29 @@ const styles = StyleSheet.create({
   edit: {
     color: "#0239A3",
     marginTop: 20,
+  },
+  input: {
+    width: 350,
+    height: 55,
+    margin: 10,
+    padding: 8,
+    borderRadius: 15,
+    fontSize: 18,
+    fontWeight: "500",
+  },
+  button: {
+    width: 170,
+    height: 50,
+    margin: 10,
+    padding: 8,
+    borderRadius: 15,
+    backgroundColor: "#F99500",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  buttonTitle: {
+    color: "white",
+    fontSize: 24,
+    fontWeight: "bold",
   },
 });
