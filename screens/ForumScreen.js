@@ -15,6 +15,12 @@ function ForumScreen() {
 
   return (
     <View style={styles.container}>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => navigation.navigate("ForumPost")}
+      >
+        <Text style={styles.buttonTitle}>New Post</Text>
+      </TouchableOpacity>
       <Card>
         <Card.Content>
           <Paragraph>Computer Science</Paragraph>
@@ -72,5 +78,20 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     justifyContent: "flex-start",
     padding: 20,
+  },
+  button: {
+    width: 170,
+    height: 50,
+    margin: 10,
+    padding: 8,
+    borderRadius: 15,
+    backgroundColor: "#F99500",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  buttonTitle: {
+    color: "white",
+    fontSize: 20,
+    fontWeight: "bold",
   },
 });
